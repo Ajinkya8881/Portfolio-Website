@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas
 
 st.set_page_config(layout="wide")
 
@@ -10,6 +11,25 @@ with col1:
 with col2:
     st.title("Ajinkya kolhe")
     content = """
-   Hi, I am Ajinkya! I am a python programmer, Guitarist and a Gymfreak who loves Photoshoots! I graduated in 2020 with a Bachelor of Engineering degree from Savitri Bai Phule University Pune. here I am showcasing some cool Web apps and Desktop apps which I am building while learning python. Thanks!!!
+   Hi, I am Ajinkya! I am a python programmer, Guitarist and a Gymfreak who loves Photoshoots! I graduated in 2020 with a Bachelors in Computer Science Engineering from Savitri Bai Phule Pune University. Here I am showcasing some cool Web apps and Desktop apps which I am building while learning python. Thanks!!!
     """
     st.info(content)
+
+content2 = """
+Below you can find some of the apps I have built in Python. Feel free to contact me!!!
+"""
+st.write(content2)
+
+col3, col4 = st.columns(2)
+
+df = pandas.read_csv("data.csv", sep=";")
+with col3:
+    for index, row in df[:10].iterrows():
+        st.header(row["title"])
+
+with col4:
+    for index, row in df[10:].iterrows():
+        st.header(row["title"])
+
+
+
